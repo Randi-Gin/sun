@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孙加丽 - 个人作品集与简历</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    /* --- Reset & Variables --- */
+    :root {
+        --primary: #6366f1; /* 靛蓝色，适合数字媒体专业 */
+        --primary-dark: #4338ca;
+        --secondary: #ec4899; /* 粉色点缀 */
+        --dark: #1e293b;
+        --light: #f8fafc;
+        --text-main: #334155;
+        --text-light: #64748b;
+        --white: #ffffff;
+        --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+        font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+        background-color: var(--light);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* --- Navbar --- */
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        z-index: 1000;
+        padding: 1rem 0;
+        transition: 0.3s;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo {
+        width: 40px; height: 40px;
+        background: var(--gradient);
+        color: white;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: bold; font-size: 1.2rem;
+    }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 500; transition: 0.3s; position: relative; }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+    .nav-links a::after {
+        content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
+        background: var(--primary); transition: 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* --- Hero Section --- */
+    .hero {
+        padding: 160px 0 100px;
+        background: radial-gradient(circle at top right, #e0e7ff 0%, transparent 40%),
+                    radial-gradient(circle at bottom left, #fce7f3 0%, transparent 40%);
+        text-align: center;
+    }
+    .hero-img-wrapper { position: relative; width: 150px; height: 150px; margin: 0 auto 2rem; }
+    .hero-img {
+        width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+        border: 4px solid white; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        animation: float 6s ease-in-out infinite;
+    }
+    .status-dot {
+        position: absolute; bottom: 10px; right: 10px;
+        width: 20px; height: 20px; background: #22c55e;
+        border: 3px solid white; border-radius: 50%;
+        box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+    }
+    .hero-title { font-size: 3rem; font-weight: 700; color: var(--dark); margin-bottom: 1rem; }
+    .typewriter { font-size: 1.5rem; color: var(--primary); font-weight: 600; margin-bottom: 1.5rem; min-height: 2rem; }
+    .cursor { animation: blink 1s infinite; }
+    .hero-bio { font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto 2rem; }
+    .hero-info { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .info-item { background: white; padding: 0.5rem 1.5rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-size: 0.9rem; }
+    .info-item i { color: var(--primary); margin-right: 0.5rem; }
+    .hero-btns { display: flex; justify-content: center; gap: 1rem; }
+    .btn {
+        padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s;
+    }
+    .btn-primary { background: var(--gradient); color: white; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4); }
+    .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: white; }
+
+    /* --- Sections General --- */
+    .section { padding: 80px 0; }
+    .section-light { background: white; }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-header h2 { font-size: 2.5rem; color: var(--dark); }
+    .divider { width: 60px; height: 4px; background: var(--gradient); margin: 1rem auto; border-radius: 2px; }
+    .section-icon { width: 60px; height: 60px; background: var(--light); color: var(--primary); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
+
+    /* --- Education & Skills Grid --- */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .edu-card, .skills-card { background: var(--light); padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+    .edu-card h2, .skills-card h2 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--dark); }
+    .edu-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary); }
+    .edu-card .time, .edu-card .major { color: var(--text-light); margin-bottom: 0.5rem; }
+    .gpa-box { margin: 2rem 0; display: flex; align-items: baseline; gap: 0.5rem; }
+    .gpa-box .score { font-size: 2.5rem; font-weight: 800; color: var(--primary); }
+    .gpa-box .label { color: var(--text-light); }
+    .courses-tags h4 { margin-bottom: 1rem; color: var(--dark); }
+    .courses-tags .tag {
+        display: inline-block; background: white; padding: 0.4rem 1rem;
+        margin: 0 0.5rem 0.5rem 0; border-radius: 8px; font-size: 0.9rem; color: var(--text-main);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.3s;
+    }
+    .courses-tags .tag:hover { transform: translateY(-2px); background: var(--primary); color: white; }
+    .skills-cloud { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .skill-item {
+        padding: 0.6rem 1.2rem; background: white; border: 1px solid #e2e8f0; border-radius: 50px;
+        font-weight: 500; transition: 0.3s; animation: float 5s ease-in-out infinite;
+    }
+    .skill-item:hover { background: var(--primary); color: white; border-color: var(--primary); transform: scale(1.05); }
+
+    /* --- 3D Projects --- */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .project-card { height: 420px; perspective: 1000px; cursor: pointer; }
+    .card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-radius: 20px; }
+    .project-card:hover .card-inner { transform: rotateY(180deg); }
+    .card-front, .card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 20px; overflow: hidden; background: white; display: flex; flex-direction: column; }
+    .card-front { z-index: 2; }
+    .card-back { transform: rotateY(180deg); background: var(--dark); color: white; padding: 2rem; justify-content: center; }
+    .card-img { height: 200px; overflow: hidden; }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    .card-front:hover .card-img img { transform: scale(1.1); }
+    .card-content-front { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+    .card-content-front h3 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--dark); }
+    .role { display: inline-block; background: #e0e7ff; color: var(--primary); padding: 0.2rem 0.8rem; border-radius: 4px; font-size: 0.8rem; margin-bottom: 1rem; align-self: flex-start; }
+    .card-front p { color: var(--text-light); font-size: 0.95rem; flex-grow: 1; margin-bottom: 1rem; text-align: left; }
+    .tech-stack { font-size: 0.85rem; color: var(--primary); font-weight: 600; text-align: left; padding-top: 1rem; border-top: 1px solid #f1f5f9; }
+    .card-back h3 { margin-bottom: 1.5rem; font-size: 1.5rem; }
+    .card-back ul { list-style: none; text-align: left; }
+    .card-back li { margin-bottom: 1rem; position: relative; padding-left: 1.5rem; }
+    .card-back li::before { content: '✓'; position: absolute; left: 0; color: var(--secondary); font-weight: bold; }
+    .back-icon { font-size: 3rem; color: rgba(255,255,255,0.1); margin-top: auto; }
+
+    /* --- Works Section --- */
+    .works-grid { display: grid; gap: 3rem; }
+    .work-category { margin-bottom: 3rem; }
+    .work-category h3 { font-size: 1.8rem; color: var(--dark); margin-bottom: 1.5rem; text-align: center; }
+
+    /* 调整work-items的布局，适应竖版图片 */
+    .work-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    /* 调整work-item的样式，更好地展示竖版图片 */
+    .work-item {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: 0.3s;
+        height: 500px; /* 增加高度以适应竖版图片 */
+        cursor: pointer;
+    }
+
+    /* 确保图片按比例显示 */
+    .work-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* 使用contain而不是cover，保持图片比例 */
+        object-position: center;
+    }
+
+    /* 调整overlay的位置和样式 */
+    .work-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        padding: 1.5rem;
+        color: white;
+        height: 30%; /* 调整overlay高度 */
+    }
+    .work-overlay h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        white-space: nowrap; /* 防止标题换行 */
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .work-overlay p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* 限制显示3行 */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* --- Awards --- */
+    .awards-list { display: grid; gap: 1.5rem; }
+    .award-item { background: white; padding: 1.5rem; border-radius: 15px; display: flex; align-items: center; gap: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid transparent; transition: 0.3s; }
+    .award-item.level-national { border-left-color: #fbbf24; }
+    .award-item.level-provincial { border-left-color: #94a3b8; }
+    .award-item.level-school { border-left-color: #60a5fa; }
+    .award-item:hover { transform: translateX(10px); }
+    .award-icon { width: 50px; height: 50px; background: #f1f5f9; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; flex-shrink: 0; }
+    .award-info h4 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--dark); }
+    .award-meta { display: flex; gap: 1rem; font-size: 0.9rem; }
+    .badge { padding: 0.2rem 0.6rem; border-radius: 4px; background: #f1f5f9; color: var(--text-light); }
+    .time { color: var(--text-light); }
+
+    /* --- Evaluation --- */
+    .eval-box { background: white; padding: 3rem; border-radius: 20px; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto; }
+    .quote-icon { font-size: 2rem; color: var(--primary); opacity: 0.2; }
+    .quote-icon-right { float: right; }
+    .eval-box h2 { margin: 1rem 0 2rem; font-size: 2rem; }
+    .eval-box p { font-size: 1.1rem; color: var(--text-light); line-height: 1.8; }
+
+    /* --- Footer --- */
+    footer { text-align: center; padding: 2rem; background: #0f172a; color: #94a3b8; font-size: 0.9rem; }
+
+    /* --- Animations & Utils --- */
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .fade-up { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* --- Modal Styles --- */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.9);
+        overflow: auto;
+    }
+    .modal-content {
+        margin: auto;
+        display: block;
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+    }
+    .close {
+        position: absolute;
+        top: 25px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    #caption {
+        text-align: center;
+        color: #f1f1f1;
+        padding: 20px 0;
+        font-size: 1.2rem;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+        .grid-2 { grid-template-columns: 1fr; }
+        .hero-title { font-size: 2rem; }
+        .nav-links { display: none; }
+    }
+</style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">孙</div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#education">教育</a></li>
+                <li><a href="#projects">项目</a></li>                <li><a href="#works">作品</a></li>
+                <li><a href="#awards">荣誉</a></li>
+                <li><a href="#evaluation">评价</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-img-wrapper">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Casey&backgroundColor=c0aede" alt="Avatar" class="hero-img">
+                <div class="status-dot"></div>
+            </div>
+            <h1 class="hero-title">孙加丽</h1>
+            <div class="typewriter"><span id="type-text"></span><span class="cursor">|</span></div>
+            <p class="hero-bio">2026届数字媒体技术专业本科，擅长UI设计与交互开发，具备扎实的项目实战经验</p>
+            <div class="hero-info">
+                <div class="info-item"><i class="fas fa-university"></i> 成都理工大学（双一流）</div>
+                <div class="info-item"><i class="fas fa-graduation-cap"></i> 数字媒体技术</div>
+            </div>
+            <div class="hero-btns">
+                <a href="mailto:3490232682@qq.com" class="btn btn-primary">联系我</a>
+                <a href="#works" class="btn btn-outline">查看作品</a>
+            </div>
+        </div>
+    </section>
+    <section class="section section-light" id="education">
+        <div class="container">
+            <div class="grid-2">
+                <div class="edu-card fade-up">
+                    <div class="section-icon"><i class="fas fa-book-open"></i></div>
+                    <h2>教育背景</h2>
+                    <h3>成都理工大学</h3>
+                    <p class="time">2022.09 - 2026.06 | 本科</p>
+                    <p class="major">数字媒体技术</p>
+                    <div class="gpa-box">
+                        <span class="label">平均绩点</span>
+                        <span class="score" data-target="3.4">0</span>
+                        <span class="max">/ 5.0</span>
+                    </div>
+                    <div class="courses-tags">
+                        <h4>主修课程</h4>
+                        <span class="tag">媒体软件和画面艺术</span>
+                        <span class="tag">离散数学</span>
+                        <span class="tag">Java 语言程序设计</span>
+                        <span class="tag">计算机操作系统</span>
+                        <span class="tag">计算机组成原理</span>
+                        <span class="tag">数据库系统原理</span>
+                        <span class="tag">计算机动画</span>
+                        <span class="tag">虚拟现实技术</span>
+                        <span class="tag">web 开发技术基础</span>
+                        <span class="tag">数字音视频处理</span>
+                    </div>
+                </div>
+                <div class="skills-card fade-up">
+                    <div class="section-icon"><i class="fas fa-layer-group"></i></div>
+                    <h2>专业技能</h2>
+                    <div class="skills-cloud">
+                        <span class="skill-item">Adobe An</span>
+                        <span class="skill-item">Adobe Ae</span>
+                        <span class="skill-item">数字音视频处理</span>
+                        <span class="skill-item">即时设计</span>
+                        <span class="skill-item">Photoshop</span>
+                        <span class="skill-item">界面设计</span>
+                        <span class="skill-item">3DsMax</span>
+                        <span class="skill-item">Axis Studio (动捕)</span>
+                        <span class="skill-item">Unity</span>
+                        <span class="skill-item">虚幻引擎</span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">C/C++</span>
+                        <span class="skill-item">Web开发技术</span>
+                        <span class="skill-item">Office办公软件</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>项目经历</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card fade-up">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-img"><img src="image/1.png" alt="Project"></div>
+                            <div class="card-content-front">
+                                <h3>智慧城市监测平台</h3>
+                                <span class="role">核心成员</span>
+                                <p>主导项目界面设计与前端页面开发，成功报名计算机设计大赛。</p>
+                                <div class="tech-stack">前端开发 / 界面设计</div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3>项目成果</h3>
+                            <ul>
+                                <li> 负责"智慧城市监测"项目的整体界面视觉设计，确保用户体验友好。</li>
+                                <li> 独立完成前端页面开发，实现数据可视化与实时监测功能。</li>
+                                <li> 凭借该项目获得 2025 计算机设计大赛全国三等奖。</li>
+                            </ul>
+                            <div class="back-icon"><i class="fas fa-lightbulb"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-up">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-img"><img src="image/5.jpg" alt="Project"></div>
+                            <div class="card-content-front">
+                                <h3>丹辉记忆-人物IP设计</h3>
+                                <span class="role">核心成员</span>
+                                <p>结合四川地域特色设计人物IP形象及表情包。</p>
+                                <div class="tech-stack">IP形象设计 / 创意美术</div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3>项目成果</h3>
+                            <ul>
+                                <li> 参与核心IP形象的设计工作，赋予角色独特的个性。</li>
+                                <li> 将IP形象与四川地域特色、人文风俗深度融合，增强文化属性。</li>
+                                <li> 设计多套IP形象人物表情包，提升项目趣味性。</li>
+                                <li> 荣获 2025 中国好创意暨全国数字艺术大赛省级二等奖。</li>
+                            </ul>
+                            <div class="back-icon"><i class="fas fa-lightbulb"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-up">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-img"><img src="image/7.jpg" alt="Project"></div>
+                            <div class="card-content-front">
+                                <h3>苏拉卡尔塔博弈项目</h3>
+                                <span class="role">核心成员</span>
+                                <p>设计博弈系统交互方式，并将原型转化为实际图形界面。</p>
+                                <div class="tech-stack">交互设计 / UI实现</div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3>项目成果</h3>
+                            <ul>
+                                <li> 精心设计用户与博弈系统的交互逻辑，包括棋子的点击、拖动及提示展示。</li>
+                                <li> 熟练运用 UI 开发技术，将设计好的界面原型高效转化为可用的图形界面。</li>
+                                <li> 参加 2024 年全国大学生计算机博弈大赛，荣获一等奖。</li>
+                            </ul>
+                            <div class="back-icon"><i class="fas fa-lightbulb"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section section-light" id="works">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>作品展示</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="works-grid">
+                <div class="work-category fade-up">
+                    <h3>智慧城市监测平台</h3>
+                    <div class="work-items">
+                        <div class="work-item" onclick="openModal('image/1.png', '智慧城市监测平台')">
+                            <img src="image/1.png" alt="智慧城市监测平台" class="work-img">
+                            <div class="work-overlay">
+                                <h4>智慧城市监测平台</h4>
+                                <p>智慧城市监测平台的登录界面设计，采用科技感十足的蓝色调，展现现代科技风格。</p>
+                            </div>
+                        </div>
+                        <div class="work-item" onclick="openModal('image/2.png', '智慧城市监测平台')">
+                            <img src="image/2.png" alt="智慧城市监测平台" class="work-img">
+                            <div class="work-overlay">
+                                <h4>智慧城市监测平台</h4>
+                                <p>智慧城市监测平台的主界面，包含灾害数据可视化、地图展示、设备监控等多个功能模块。</p>
+                            </div>
+                        </div>
+                        <div class="work-item" onclick="openModal('image/3.png', '智慧城市监测平台')">
+                            <img src="image/3.png" alt="智慧城市监测平台" class="work-img">
+                            <div class="work-overlay">
+                                <h4>智慧城市监测平台</h4>
+                                <p>智慧城市监测平台的设备监控界面，展示各类监测设备的运行状态和数据。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-category fade-up">
+                    <h3>丹辉记忆-人物IP设计</h3>
+                    <div class="work-items">
+                        <div class="work-item" onclick="openModal('image/4.jpg', '丹辉记忆-人物IP设计')">
+                            <img src="image/4.jpg" alt="丹辉记忆-人物IP设计" class="work-img">
+                            <div class="work-overlay">
+                                <h4>丹辉记忆-人物IP设计</h4>
+                                <p>丹辉记忆IP形象设计，融合四川地域特色和红色文化元素，展现独特的艺术风格。</p>
+                            </div>
+                        </div>
+                        <div class="work-item" onclick="openModal('image/5.jpg', '丹辉记忆-人物IP设计')">
+                            <img src="image/5.jpg" alt="丹辉记忆-人物IP设计" class="work-img">
+                            <div class="work-overlay">
+                                <h4>丹辉记忆-人物IP设计</h4>
+                                <p>丹辉记忆IP设计灵感来源和特征分析，展示IP形象的文化内涵和设计理念。</p>
+                            </div>
+                        </div>
+                        <div class="work-item" onclick="openModal('image/6.jpg', '丹辉记忆-人物IP设计')">
+                            <img src="image/6.jpg" alt="丹辉记忆-人物IP设计" class="work-img">
+                            <div class="work-overlay">
+                                <h4>丹辉记忆-人物IP设计</h4>
+                                <p>丹辉记忆IP设计的周边产品展示，包括海报、文创产品等应用场景。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="awards">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>荣誉奖项</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="awards-list">
+                <div class="award-item fade-up level-national">
+                    <div class="award-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="award-info">
+                        <h4>2025 中国大学生计算机设计大赛全国三等奖</h4>
+                        <div class="award-meta">
+                            <span class="badge">国家级</span>
+                            <span class="time">2025.07</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="award-item fade-up level-national">
+                    <div class="award-icon"><i class="fas fa-medal"></i></div>
+                    <div class="award-info">
+                        <h4>2024 年全国大学生计算机博弈大赛一等奖</h4>
+                        <div class="award-meta">
+                            <span class="badge">国家级</span>
+                            <span class="time">2024.08</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="award-item fade-up level-provincial">
+                    <div class="award-icon"><i class="fas fa-star"></i></div>
+                    <div class="award-info">
+                        <h4>2025 中国好创意暨全国数字艺术大赛省级二等奖</h4>
+                        <div class="award-meta">
+                            <span class="badge">省级</span>
+                            <span class="time">2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="award-item fade-up level-provincial">
+                    <div class="award-icon"><i class="fas fa-code"></i></div>
+                    <div class="award-info">
+                        <h4>蓝桥杯四川赛区C/C++程序设计大学B组三等奖</h4>
+                        <div class="award-meta">
+                            <span class="badge">省级</span>
+                            <span class="time">2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="award-item fade-up level-school">
+                    <div class="award-icon"><i class="fas fa-award"></i></div>
+                    <div class="award-info">
+                        <h4>2024-2025 学年校级优秀学生</h4>
+                        <div class="award-meta">
+                            <span class="badge">校级</span>
+                            <span class="time">2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="award-item fade-up ">
+                    <div class="award-icon"><i class="fas fa-award"></i></div>
+                    <div class="award-info">
+                        <h4>2023-2024 学年院级优秀学生</h4>
+                        <div class="award-meta">
+                            <span class="badge">院级</span>
+                            <span class="time">2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="award-item fade-up ">
+                    <div class="award-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="award-info">
+                        <h4>入党积极分子培训班"优秀学员"</h4>
+                        <div class="award-meta">
+                            <span class="badge">院级</span>
+                            <span class="time">2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="award-item fade-up ">
+                    <div class="award-icon"><i class="fas fa-language"></i></div>
+                    <div class="award-info">
+                        <h4>大学英语四六级证书</h4>
+                        <div class="award-meta">
+                            <span class="badge">证书</span>
+                            <span class="time">2023/2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="award-item fade-up ">
+                    <div class="award-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="award-info">
+                        <h4>专业成绩年级前10%</h4>
+                        <div class="award-meta">
+                            <span class="badge">成绩</span>
+                            <span class="time">2022-2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="evaluation">
+        <div class="container fade-up">
+            <div class="eval-box">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <h2>个人评价</h2>
+                <p>工作积极认真，细心负责，熟练运用办公自动化软件，善于在工作中发现问题、提出问题、解决问题，有较强的分析能力；勤奋好学，踏实肯干，动手能力强，有很强的社会责任感。</p>
+                <i class="fas fa-quote-right quote-icon-right"></i>
+            </div>
+        </div>
+    </section>
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
+    <footer>
+        <p>&copy; 2026 孙加丽. 个人作品集与简历.</p>
+    </footer>
+<script>
+    // Typewriter Effect
+    const textElement = document.getElementById('type-text');
+    const texts = ["数字媒体工程师", "UI交互设计师", "全栈开发爱好者"];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentText = texts[textIndex];
+        if (isDeleting) {
+            textElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            textElement.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentText.length) {
+            isDeleting = true;
+            setTimeout(type, 2000);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            setTimeout(type, 500);
+        } else {
+            setTimeout(type, isDeleting ? 50 : 100);
+        }
+    }
+    type();
+
+    // Scroll Animations
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                const score = entry.target.querySelector('.score');
+                if (score && !score.classList.contains('animated')) {
+                    animateValue(score, 0, parseFloat(score.dataset.target), 2000);
+                    score.classList.add('animated');
+                }
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Number Counter (Fixed for GPA)
+    function animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const currentVal = progress * (end - start) + start;
+            obj.innerHTML = currentVal.toFixed(1); // Force 1 decimal place
+
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    // Modal Functions
+    function openModal(imgSrc, imgTitle) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const captionText = document.getElementById('caption');
+
+        modal.style.display = "block";
+        modalImg.src = imgSrc;
+        captionText.innerHTML = imgTitle;
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('imageModal');
+        modal.style.display = "none";
+    }
+
+    // Close modal when clicking outside the image
+    window.onclick = function(event) {
+        const modal = document.getElementById('imageModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>
